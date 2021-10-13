@@ -8,12 +8,14 @@ import { HeadBarComponent } from './components/head-bar/head-bar.component';
 import { RecipeService } from './services/recipe.service';
 import { CategoryService } from './services/category.service';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { RecipeAddFormComponent } from './components/recipe-add-form/recipe-add-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeadBarComponent,
-    SidebarComponent
+    SidebarComponent,
+    RecipeAddFormComponent
   ],
   imports: [
     BrowserModule,

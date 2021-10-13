@@ -12,7 +12,7 @@ import { RecipeService } from './services/recipe.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  public recipes : Recipe[]
+  recipes : Recipe[]
   deleteRecipe: Recipe;
   editRecipe: Recipe;
   categories: Category[];
@@ -22,7 +22,6 @@ export class AppComponent implements OnInit{
   
   ngOnInit():  void{
     this.getAllRecipes();
-
   }
 ;
 
@@ -76,5 +75,18 @@ export class AppComponent implements OnInit{
     button.click();
   }
 
-
+  public searchBoxEvent(searchValue : string){
+    console.log("111");
+    console.log("from app comp ", searchValue);
+    this.recipeService.getRecipesByName(searchValue).subscribe(
+      (response : Recipe[]) => {
+        console.log(response);
+        this.recipes = response;
+      },
+      (error : HttpErrorResponse ) =>{
+        alert(error.message);
+      }
+    )
+  }
 }
+
