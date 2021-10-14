@@ -7,39 +7,44 @@
         </button>
         </div>
         <div class="modal-body">
-            <form #addForm="ngForm">
+            <form [formGroup]="addForm">
                 <div class="form-group">
                     <label for="name">Name</label>
-                    <input ngModel type="text" name="name" class="form-control" id="name" placeholder="Recipe Name" required>
+                    <input formControlName="name" type="text" name="name" class="form-control" id="name" placeholder="Recipe Name">
+                    <div *ngIf="addForm.get('name').touched && addForm.get('name').hasError('required')" class="alert alert-danger" role="alert"> this field is required</div>
+                    <div *ngIf="addForm.get('name').touched && addForm.get('name').hasError('maxlength')" class="alert alert-danger" role="alert">maxinmum name length is : {{addForm.get('name').errors.maxlength.requiredLength}}</div>
+
                 </div>
                 <div class="form-group">
                     <label for="minutes">Minutes</label>
-                    <input ngModel type="text" name="minutes" class="form-control" id="minutes" placeholder="Minutes to prepare">
+                    <input formControlName="minutes" type="text" name="minutes" class="form-control" id="minutes" placeholder="Minutes to prepare">
+                    <div *ngIf="addForm.get('minutes').touched && addForm.get('minutes').hasError('required')" class="alert alert-danger" role="alert"> this field is required</div>
+                    <div *ngIf="addForm.get('minutes').touched && addForm.get('minutes').hasError('pattern')" class="alert alert-danger" role="alert"> only numbers accepted </div>
                 </div>
                 <div class="form-group">
                     <label for="category">Category</label>
-                    <select class="form-select" ngModel name="categorySelected"></select>
-                    <option selected>
-                        <a>Choose category</a>
-                    </option>
-                    <option *ngFor="let category of categories" value={{category.id}}>{{category?.name}}
 
-                    </option>
+                    <select class="form-select" name="category" id="category" formControlName="categoryId">
+  
+                 <option  *ngFor="let category of categories" [value]="category.categoryId" >{{category?.name}} 
+                    
+                 </option>
+              </select>
 
+                    <div *ngIf="addForm.get('categoryId').touched && addForm.get('categoryId').hasError('required')" class="alert alert-danger" role="alert"> this field is required</div>
+                    <div *ngIf="addForm.get('categoryId').touched && addForm.get('categoryId').hasError('nullValidator')" class="alert alert-danger" role="alert"> this field is required</div>
 
                 </div>
 
 
                 <div class="form-group">
                     <label for="imageUrl">Image URL</label>
-                    <input type="text" name="imageUrl" class="form-control" id="imageUrl" placeholder="Image URL">
+                    <input formControlName="imageUrl" type="text" name="imageUrl" class="form-control" id="imageUrl" placeholder="Image URL">
                 </div>
                 <div class="modal-footer">
                     <button type="button" id="add-Recipe-form" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary">Save changes</button>
+                    <button (click)='addRecipe()' [disabled]="!addForm.valid" type="submit" class="btn btn-primary">add new recipe</button>
                 </div>
-
-
 
             </form>
         </div>

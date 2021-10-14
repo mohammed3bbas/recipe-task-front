@@ -36,6 +36,17 @@ export class AppComponent implements OnInit{
       }
     )
   }
+  searchRecipeByName(searchValue: string) {
+    this.recipeService.getRecipesByName(searchValue).subscribe(
+      (response : Recipe[]) => {
+        console.log(response);
+        this.recipes = response;
+      },
+      (error : HttpErrorResponse ) =>{
+        alert(error.message);
+      }
+    )
+  }
 
 
 
@@ -75,18 +86,23 @@ export class AppComponent implements OnInit{
     button.click();
   }
 
+
   public searchBoxEvent(searchValue : string){
     console.log("111");
     console.log("from app comp ", searchValue);
-    this.recipeService.getRecipesByName(searchValue).subscribe(
-      (response : Recipe[]) => {
-        console.log(response);
-        this.recipes = response;
-      },
-      (error : HttpErrorResponse ) =>{
-        alert(error.message);
-      }
-    )
+    if(searchValue !== ""){
+      this.searchRecipeByName(searchValue);
+    }
+    else{
+      this.getAllRecipes();
+    }
+    
   }
+
+
+
+  
+
+
 }
 

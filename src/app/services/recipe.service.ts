@@ -1,3 +1,4 @@
+import { RecipeDTO } from './../models/recipeDTO';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -31,12 +32,12 @@ export class RecipeService {
     return this.http.get<Recipe[]>(`${this.apiServerUrl}/recipes/category?name=${name}`);
   }
   // POST
-  public addRecipe(recipe : Recipe) : Observable<Recipe>{
+  public addRecipe(recipe : RecipeDTO) : Observable<Recipe>{
     return this.http.post<Recipe>(`${this.apiServerUrl}/recipes`,recipe);
   }
 
   //PUT 
-  public updateRecipe(recipe : Recipe) : Observable<Recipe>{
+  public updateRecipe(recipe : RecipeDTO) : Observable<Recipe>{
     return this.http.put<Recipe>(`${this.apiServerUrl}/recipes`,recipe);
   }
 

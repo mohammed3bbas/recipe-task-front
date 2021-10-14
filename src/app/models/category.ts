@@ -1,7 +1,7 @@
 import { Recipe } from "./recipe";
 
 export interface Category{
-    id : number,
+    categoryId : number,
     name : string,
     
     

@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeadBarComponent } from './components/head-bar/head-bar.component';
 import { RecipeService } from './services/recipe.service';
 import { CategoryService } from './services/category.service';
@@ -19,7 +19,9 @@ import { RecipeAddFormComponent } from './components/recipe-add-form/recipe-add-
   ],
   imports: [
     BrowserModule,
-    HttpClientModule, FormsModule
+    HttpClientModule, 
+    FormsModule, 
+    ReactiveFormsModule
   ],
   providers: [CategoryService,RecipeService],
   bootstrap: [AppComponent]

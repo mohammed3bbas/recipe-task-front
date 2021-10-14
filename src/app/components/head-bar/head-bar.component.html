@@ -3,8 +3,20 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
    <span class="navbar-toggler-icon"></span>
    </button>
+    <div>
+        <button type="button" class="btn btn-primary  btn-sm" data-toggle="modal" data-target="#addRecipeModal">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+            New Recipe
+        </button>
+    </div>
     <form class="form-inline ml-auto">
         <input ngModel #searchObject="ngModel" name="searchObject" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
         <button (click)="search(searchObject.value)" lass=" btn btn-outline-light my-2 my-sm-0 " type="submit ">Search</button>
     </form>
 </nav>
+
+
+<!-- Add Recipe Modal -->
+<div class="modal fade" id="addRecipeModal" tabindex="-1" role="dialog" aria-labelledby="addRecipeModalLabel" aria-hidden="true">
+    <recipe-add-form></recipe-add-form>
+</div>
