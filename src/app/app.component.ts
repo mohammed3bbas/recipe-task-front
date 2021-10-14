@@ -13,8 +13,7 @@ import { RecipeService } from './services/recipe.service';
 })
 export class AppComponent implements OnInit{
   recipes : Recipe[]
-  deleteRecipe: Recipe;
-  editRecipe: Recipe;
+  
   categories: Category[];
   
 
@@ -40,7 +39,10 @@ export class AppComponent implements OnInit{
     this.recipeService.getRecipesByName(searchValue).subscribe(
       (response : Recipe[]) => {
         console.log(response);
-        this.recipes = response;
+        if(response !== null){
+          this.recipes = response;
+        }
+        
       },
       (error : HttpErrorResponse ) =>{
         alert(error.message);
@@ -64,6 +66,7 @@ export class AppComponent implements OnInit{
       }
     );
   }
+  
 
   public onOpenModal(recipe: Recipe, mode: string): void {
     const container = document.getElementById('main-container');
@@ -78,10 +81,7 @@ export class AppComponent implements OnInit{
     //   this.editRecipe = recipe;
     //   button.setAttribute('data-target', '#updateRecipeModal');
     // }
-    // if (mode === 'delete') {
-    //   this.deleteRecipe = recipe;
-    //   button.setAttribute('data-target', '#deleteRecipeModal');
-    // }
+    
     container.appendChild(button);
     button.click();
   }
@@ -97,6 +97,31 @@ export class AppComponent implements OnInit{
       this.getAllRecipes();
     }
     
+  }
+
+
+  public deleteRecipe(id : number){
+
+    // how can i get the id of the given card !!!!!!!!!
+    console.log(id)
+    console.log(typeof id)
+
+    this.recipeService.deleteRecipe(id).subscribe(
+      (response ) => {
+        console.log(response);
+      },
+      (error : HttpErrorResponse ) =>{
+        alert(error.message);
+      }
+    )
+    this.getAllRecipes();
+
+
+  }
+  public editRecipe(){
+    
+    // edit recipe 
+
   }
 
 

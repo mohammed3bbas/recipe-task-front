@@ -25,7 +25,7 @@ export class RecipeService {
 
 
   public getRecipesByName(name: string): Observable<Recipe[]> {
-    return this.http.get<Recipe[]>(`${this.apiServerUrl}/recipes/${name}`);
+    return this.http.get<Recipe[]>(`${this.apiServerUrl}/recipes/?name=${name}`);
   }
 
   public getRecipesByCategoryName(name: string): Observable<Recipe[]> {

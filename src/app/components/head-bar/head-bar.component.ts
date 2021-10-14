@@ -9,7 +9,7 @@ import { AppComponent } from './../../app.component';
 })
 export class HeadBarComponent implements OnInit {
 
-  @Output('searchBoxEvent') searchBoxEvent = new EventEmitter<string>()
+  @Output('searchBoxEvent') searchBoxEvent = new EventEmitter<string>();
 
   
  
@@ -29,5 +29,8 @@ export class HeadBarComponent implements OnInit {
   
 
   }
+
+
+  
 
 }

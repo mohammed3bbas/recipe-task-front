@@ -1,5 +1,5 @@
 <div>
-    <app-head-bar> (searchBoxEvent)="searchBoxEvent($event)" </app-head-bar>
+    <app-head-bar (searchBoxEvent)="searchBoxEvent($event)"> </app-head-bar>
 </div>
 
 
@@ -10,7 +10,7 @@
     <div class="container" id="main-container">
 
         <div class="row">
-            <div *ngFor="let recipe of recipes" class="col-md-6 col-xl-3">
+            <div *ngFor="let recipe of recipes" class="col-md-6 col-xl-3" [id]="recipe?.id">
                 <div class="card m-b-30">
                     <div class="card-body row">
                         <div class="col-6">
@@ -27,8 +27,8 @@
                     <div class="card-body">
                         <div class="float-right btn-group btn-group-sm">
 
-                            <a (click)="onOpenModal(recipe, 'edit')" class="btn btn-secondary tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
-                            <a (click)="onOpenModal(recipe, 'delete')" class="btn btn-danger tooltips" data-placement="top" data-original-title="Delete"><i class="fa fa-trash"></i></a>
+                            <a (click)="editRecipe()" class="btn btn-secondary tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
+                            <a (click)="deleteRecipe(recipe?.id)" class="btn btn-danger tooltips" data-placement="top" data-original-title="Delete"><i class="fa fa-trash"></i></a>
                             <a class="btn btn-info tooltips" data-placement="top" data-original-title="details"><i
                         class="fa fa-info-circle" aria-hidden="true"></i></a>
                         </div>
