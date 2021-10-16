@@ -12,155 +12,16 @@ import { RecipeService } from './services/recipe.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
-  recipes : Recipe[]
-  
-  categories: Category[];
-  
-
-  constructor(private recipeService : RecipeService ){}
-  
-  ngOnInit():  void{
-    this.getAllRecipes();
-  }
-;
-
-  public getAllRecipes() : void {
-    this.recipeService.getAllRecipes().subscribe(
-      (response : Recipe[]) => {
-        console.log(response);
-        this.recipes = response;
-      },
-      (error : HttpErrorResponse ) =>{
-        alert(error.message);
-      }
-    )
-  }
-  searchRecipeByName(searchValue: string) {
-    this.recipeService.getRecipesByName(searchValue).subscribe(
-      (response : Recipe[]) => {
-        console.log(response);
-        if(response !== null){
-          this.recipes = response;
-        }
-        
-      },
-      (error : HttpErrorResponse ) =>{
-        alert(error.message);
-      }
-    )
-  }
-
-
-
-  public onAddRecipe(addForm: NgForm): void {
-    document.getElementById('add-recipe-form').click();
-    this.recipeService.addRecipe(addForm.value).subscribe(
-      (response: Recipe) => {
-        console.log(response);
-        this.getAllRecipes();
-        addForm.reset();
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-        addForm.reset();
-      }
-    );
-  }
-  
-
-  public onOpenModal(recipe: Recipe, mode: string): void {
-    const container = document.getElementById('main-container');
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.style.display = 'none';
-    button.setAttribute('data-toggle', 'modal');
-    if (mode === 'add') {
-      button.setAttribute('data-target', '#addRecipeModal');
-    }
-    // if (mode === 'edit') {
-    //   this.editRecipe = recipe;
-    //   button.setAttribute('data-target', '#updateRecipeModal');
-    // }
-    
-    container.appendChild(button);
-    button.click();
-  }
-
-
-  public searchBoxEvent(searchValue : string){
-    console.log("from app comp ", searchValue);
-    if(searchValue !== ""){
-      this.searchRecipeByName(searchValue);
-    }
-    else{
-      this.getAllRecipes();
-    }
-    
-  }
-
-
-  public deleteRecipe(id : number){
-
-    // how can i get the id of the given card !!!!!!!!!
-    console.log(id)
-    console.log(typeof id)
-
-    this.recipeService.deleteRecipe(id).subscribe(
-      (response ) => {
-       
-        console.log(response);
-        this.getAllRecipes();
-      },
-      (error : HttpErrorResponse ) =>{
-        console.log(error.status)
-        alert(error.message);
-      }
-    )
-    
-
-
-  }
-  public editRecipe(){
-    
-    // edit recipe 
-
-  }
-
-
-  public filterEvent(name : string){
-
-    console.log("start filtering from app comp on category : ",name)
-
-    if(name !=="all"){
-      this.searchRecipeByCategoryName(name);
-    }
-    else{
-      this.getAllRecipes();
-    }
-
-    
-
-  }
-
-
-  searchRecipeByCategoryName(name : string){
-    this.recipeService.getRecipesByCategoryName(name).subscribe(
-      (response : Recipe[]) => {
-        console.log(response);
-        this.recipes = response;
-      },
-      (error : HttpErrorResponse ) =>{
-        alert(error.message);
-      }
-
-    )
-
-  }
-
-
+export class AppComponent implements OnInit {
 
   
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
+  }
+ 
+
+
+
 
 
 }

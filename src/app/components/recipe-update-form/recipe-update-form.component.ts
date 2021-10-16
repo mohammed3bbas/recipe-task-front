@@ -1,7 +1,7 @@
 import { RecipeService } from './../../services/recipe.service';
 import { RecipeDTO } from './../../models/recipeDTO';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup , ReactiveFormsModule, Validators } from '@angular/forms';
 import { Category } from 'src/app/models/category';
 import { CategoryService } from 'src/app/services/category.service';
@@ -13,6 +13,10 @@ import { Recipe } from 'src/app/models/recipe';
   styleUrls: ['./recipe-update-form.component.css']
 })
 export class RecipeUpdateFormComponent implements OnInit {
+
+  
+
+
   categories: Category[];
 
   constructor(private categoryService : CategoryService , private recipeService : RecipeService) { }

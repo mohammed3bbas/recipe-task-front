@@ -15,4 +15,10 @@ export class CategoryService {
   public getAllCategories(): Observable<Category[]> {
     return this.http.get<Category[]>(`${this.apiServerUrl}/category`);
   }
+  // Delete 
+
+  public deleteCategory(id : number) : Observable<void>{
+    return this.http.delete<void>(`${this.apiServerUrl}/category/${id}`);
+  }
+
 }

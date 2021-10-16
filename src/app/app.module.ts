@@ -10,6 +10,11 @@ import { CategoryService } from './services/category.service';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { RecipeAddFormComponent } from './components/recipe-add-form/recipe-add-form.component';
 import { RecipeUpdateFormComponent } from './components/recipe-update-form/recipe-update-form.component';
+import { RouterModule } from '@angular/router';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { HomePageRecipesComponent } from './components/home-page-recipes/home-page-recipes.component';
+import { CategoryPageComponent } from './components/category-page/category-page.component';
+
 
 @NgModule({
   declarations: [
@@ -17,13 +22,23 @@ import { RecipeUpdateFormComponent } from './components/recipe-update-form/recip
     HeadBarComponent,
     SidebarComponent,
     RecipeAddFormComponent,
-    RecipeUpdateFormComponent
+    RecipeUpdateFormComponent,
+    NotFoundComponent,
+    HomePageRecipesComponent,
+    CategoryPageComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule, 
     FormsModule, 
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule.forRoot([
+      {path : '' , component : HomePageRecipesComponent },
+      {path : 'categories' , component : CategoryPageComponent},
+      // {path : '/recipes/:id', component :  },
+      {path : '**', component : NotFoundComponent }
+    ])
+
   ],
   providers: [CategoryService,RecipeService],
   bootstrap: [AppComponent]

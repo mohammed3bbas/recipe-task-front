@@ -9,7 +9,8 @@ import { AppComponent } from './../../app.component';
 })
 export class HeadBarComponent implements OnInit {
 
-  @Output('searchBoxEvent') searchBoxEvent = new EventEmitter<string>();
+  @Output() headBarEvent = new EventEmitter<string>();
+  // @Output('addButtonEvent') addButtonEvent = new EventEmitter<string>();
 
   
  
@@ -24,11 +25,16 @@ export class HeadBarComponent implements OnInit {
   search(searchValue : string ) {
     console.log(searchValue);
 
-    this.searchBoxEvent.emit(searchValue);
+    this.headBarEvent.emit(searchValue);
     
     console.log("finished")
+  }
 
-  
+
+  addFormView(){
+    console.log("add form ")
+    this.headBarEvent.emit("addFormViewMode")
+    console.log("finished")
 
   }
 

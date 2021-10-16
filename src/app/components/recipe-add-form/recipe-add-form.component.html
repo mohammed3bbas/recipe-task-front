@@ -2,7 +2,7 @@
     <div class="modal-content">
         <div class="modal-header">
             <h5 class="modal-title" id="addRecipeModalLabel">Add Recipe</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="backToRecipes()">
            <span aria-hidden="true">&times;</span>
         </button>
         </div>
@@ -11,7 +11,7 @@
                 <div class="form-group">
                     <label for="name">Name</label>
                     <input formControlName="name" type="text" name="name" class="form-control" id="name" placeholder="Recipe Name">
-                    <div *ngIf="addForm.get('name').touched && !addForm.get('name').hasError('isUniqueName')" class="alert alert-danger" role="alert"> Recipe name already taken</div>
+                    <div *ngIf="addForm.get('name').touched && addForm.get('name').hasError('isUniqueName')" class="alert alert-danger" role="alert"> Recipe name already taken</div>
                     <div *ngIf="addForm.get('name').touched && addForm.get('name').hasError('required')" class="alert alert-danger" role="alert"> this field is required</div>
                     <div *ngIf="addForm.get('name').touched && addForm.get('name').hasError('maxlength')" class="alert alert-danger" role="alert">maxinmum name length is : {{addForm.get('name').errors.maxlength.requiredLength}}</div>
                     <div *ngIf="addForm.get('name').touched && addForm.get('name').hasError('pattern')" class="alert alert-danger" role="alert"> only alphabets allowed </div>
@@ -44,8 +44,8 @@
                     <input formControlName="imageUrl" type="text" name="imageUrl" class="form-control" id="imageUrl" placeholder="Image URL">
                 </div>
                 <div class="modal-footer">
-                    <button type="button" id="add-Recipe-form" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button (click)='addRecipe()' [disabled]="!addForm.valid" type="submit" class="btn btn-primary">add new recipe</button>
+                    <button type="button" id="add-Recipe-form" class="btn btn-secondary" data-dismiss="modal" (click)="backToRecipes()">Close</button>
+                    <button (click)='addRecipe()' [disabled]=" !addForm.valid " type="submit " class="btn btn-primary ">add new recipe</button>
                 </div>
 
             </form>

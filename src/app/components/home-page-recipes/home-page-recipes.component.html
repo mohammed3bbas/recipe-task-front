@@ -1,0 +1,46 @@
+<div>
+
+    <app-head-bar (headBarEvent)=" chooseHeadBarEvent($event) "> </app-head-bar>
+</div>
+
+
+
+
+
+
+
+<div id="wrapper" class="wrapper-content">
+    <app-sidebar (filterEvent)="filterEvent($event)"></app-sidebar>
+    <div class="container" id="main-container">
+
+        <div *ngIf='addMode'>
+            <recipe-add-form (closeEvent)='addModeChange()'> </recipe-add-form>
+        </div>
+        <div *ngIf='!addMode' class="row">
+            <div *ngFor="let recipe of recipes" class="col-md-6 col-xl-3" [id]="recipe?.recipeId">
+                <div class="card m-b-30">
+                    <div class="card-body row">
+                        <div class="col-6">
+                            <a><img src="{{recipe?.imageUrl}}" alt="" class="img-fluid rounded-circle"></a>
+                        </div>
+                        <div class="col-6 card-title align-self-center mb-0">
+                            <h5>{{recipe?.name}} </h5>
+                            <p class="m-0"> {{recipe?.category?.name}} </p>
+                        </div>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><i class="fa fa-clock-o float-center"></i>{{recipe?.minutes | number}} minutes</li>
+                    </ul>
+                    <div class="card-body">
+                        <div class="float-right btn-group btn-group-sm">
+                            <a (click)="editRecipe()" class="btn btn-secondary tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
+                            <a (click)="deleteRecipe(recipe?.recipeId)" class="btn btn-danger tooltips" data-placement="top" data-original-title="Delete"><i class="fa fa-trash"></i></a>
+                            <a class="btn btn-info tooltips" data-placement="top" data-original-title="details"><i
+                        class="fa fa-info-circle" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

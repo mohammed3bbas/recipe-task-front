@@ -1,7 +1,7 @@
 import { RecipeService } from './../../services/recipe.service';
 import { RecipeDTO } from './../../models/recipeDTO';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup , ReactiveFormsModule, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Category } from 'src/app/models/category';
 import { CategoryService } from 'src/app/services/category.service';
@@ -18,6 +18,7 @@ export class RecipeAddFormComponent implements OnInit {
   recipes: Recipe[];
   // recipeDTO : RecipeDTO
   names : String[]  = []
+  @Output() closeEvent = new EventEmitter<void>()
   
 
   constructor(private categoryService : CategoryService , private recipeService : RecipeService) { }
@@ -55,8 +56,12 @@ export class RecipeAddFormComponent implements OnInit {
 
 
   addForm = new FormGroup({
-    name : new FormControl("",[Validators.required , Validators.maxLength(50),Validators.pattern('^[a-zA-Z \-\']+'),this.isUnique()]),
-    // Unique namee is neededdd to be defined !! 
+    name : new FormControl("",
+    [Validators.required 
+      ,Validators.maxLength(50)
+      ,Validators.pattern('^[a-zA-Z \-\']+')
+      ,this.isUnique()
+      ]),
     minutes: new FormControl("",[Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)]),
     categoryId : new FormControl("",[Validators.required,Validators.nullValidator]),
     imageUrl : new FormControl("")
@@ -66,15 +71,20 @@ export class RecipeAddFormComponent implements OnInit {
 
   isUnique() : ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
-      let newName = control.value 
-
       
+      console.log(control.value)
+      let newName = control.value 
+      console.log(this.addForm)
+
 
       if(this.names.includes(newName)){
-        return {"isUniqueName" : false}
+        console.log("triiii")
+
+        return {"isUniqueName" : false};
       }
       else{
-        return {"isUniqueName" : true}
+        console.log("trio")
+        return null;
       }
       
     }
@@ -82,6 +92,7 @@ export class RecipeAddFormComponent implements OnInit {
   }
 
   addRecipe(){
+    
   
     console.log(this.addForm.value)
     const recipeDTO = new RecipeDTO(this.addForm.value.name,
@@ -103,6 +114,13 @@ export class RecipeAddFormComponent implements OnInit {
         alert(error.message);
       }
     )
+
+  }
+
+  backToRecipes(){
+    console.log("close")
+    this.closeEvent.emit();
+    console.log("closed")
 
   }
 
