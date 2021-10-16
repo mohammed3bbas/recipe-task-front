@@ -1,4 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
+import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Category } from './models/category';
@@ -88,7 +89,6 @@ export class AppComponent implements OnInit{
 
 
   public searchBoxEvent(searchValue : string){
-    console.log("111");
     console.log("from app comp ", searchValue);
     if(searchValue !== ""){
       this.searchRecipeByName(searchValue);
@@ -108,19 +108,53 @@ export class AppComponent implements OnInit{
 
     this.recipeService.deleteRecipe(id).subscribe(
       (response ) => {
+       
         console.log(response);
+        this.getAllRecipes();
       },
       (error : HttpErrorResponse ) =>{
+        console.log(error.status)
         alert(error.message);
       }
     )
-    this.getAllRecipes();
+    
 
 
   }
   public editRecipe(){
     
     // edit recipe 
+
+  }
+
+
+  public filterEvent(name : string){
+
+    console.log("start filtering from app comp on category : ",name)
+
+    if(name !=="all"){
+      this.searchRecipeByCategoryName(name);
+    }
+    else{
+      this.getAllRecipes();
+    }
+
+    
+
+  }
+
+
+  searchRecipeByCategoryName(name : string){
+    this.recipeService.getRecipesByCategoryName(name).subscribe(
+      (response : Recipe[]) => {
+        console.log(response);
+        this.recipes = response;
+      },
+      (error : HttpErrorResponse ) =>{
+        alert(error.message);
+      }
+
+    )
 
   }
 

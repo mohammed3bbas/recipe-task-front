@@ -23,7 +23,9 @@ export class HeadBarComponent implements OnInit {
 
   search(searchValue : string ) {
     console.log(searchValue);
+
     this.searchBoxEvent.emit(searchValue);
+    
     console.log("finished")
 
   

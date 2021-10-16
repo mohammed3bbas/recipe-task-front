@@ -9,13 +9,15 @@ import { RecipeService } from './services/recipe.service';
 import { CategoryService } from './services/category.service';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { RecipeAddFormComponent } from './components/recipe-add-form/recipe-add-form.component';
+import { RecipeUpdateFormComponent } from './components/recipe-update-form/recipe-update-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeadBarComponent,
     SidebarComponent,
-    RecipeAddFormComponent
+    RecipeAddFormComponent,
+    RecipeUpdateFormComponent
   ],
   imports: [
     BrowserModule,

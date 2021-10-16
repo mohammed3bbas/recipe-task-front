@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Category } from 'src/app/models/category';
 import { CategoryService } from 'src/app/services/category.service';
 
@@ -10,6 +10,7 @@ import { CategoryService } from 'src/app/services/category.service';
 })
 export class SidebarComponent implements OnInit {
   categories: Category[];
+  @Output('filterEvent') filterEvent = new EventEmitter<string>();
   
 
   constructor(private categoryService : CategoryService) { }
@@ -29,6 +30,21 @@ export class SidebarComponent implements OnInit {
       }
     )
 
+  }
+
+  public filterChoice(name? : string){
+    console.log("the category name will be filtered on ",name)
+    if(typeof name !== 'undefined'){
+    this.filterEvent.emit(name);
+    }
+    else{
+      this.filterEvent.emit("all");
+
+    }
+    console.log("finshed emiting ")
+    
+
+    
   }
 
  

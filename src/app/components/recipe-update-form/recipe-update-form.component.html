@@ -1,0 +1,53 @@
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="updateRecipeModalLabel">Update Recipe</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="updateForm">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input formControlName="name" type="text" name="name" class="form-control" id="name" placeholder="Recipe Name">
+                    <div *ngIf="updateForm.get('name').touched && updateForm.get('name').hasError('required')" class="alert alert-danger" role="alert"> this field is required</div>
+                    <div *ngIf="updateForm.get('name').touched && updateForm.get('name').hasError('maxlength')" class="alert alert-danger" role="alert">maxinmum name length is : {{updateForm.get('name').errors.maxlength.requiredLength}}</div>
+                    <div *ngIf="updateForm.get('name').touched && updateForm.get('name').hasError('pattern')" class="alert alert-danger" role="alert"> only alphabets allowed </div>
+
+                </div>
+                <div class="form-group">
+                    <label for="minutes">Minutes</label>
+                    <input formControlName="minutes" type="text" name="minutes" class="form-control" id="minutes" placeholder="Minutes to prepare">
+                    <div *ngIf="updateForm.get('minutes').touched && updateForm.get('minutes').hasError('required')" class="alert alert-danger" role="alert"> this field is required</div>
+                    <div *ngIf="updateForm.get('minutes').touched && updateForm.get('minutes').hasError('pattern')" class="alert alert-danger" role="alert"> only numbers accepted </div>
+                </div>
+                <div class="form-group">
+                    <label for="category">Category</label>
+
+                    <select class="form-select" name="category" id="category" formControlName="categoryId">
+  
+                 <option  *ngFor="let category of categories" [value]="category.categoryId" >{{category?.name}} 
+                    
+                 </option>
+              </select>
+
+                    <div *ngIf="updateForm.get('categoryId').touched && updateForm.get('categoryId').hasError('required')" class="alert alert-danger" role="alert"> this field is required</div>
+                    <div *ngIf="updateForm.get('categoryId').touched && updateForm.get('categoryId').hasError('nullValidator')" class="alert alert-danger" role="alert"> this field is required</div>
+
+                </div>
+
+
+                <div class="form-group">
+                    <label for="imageUrl">Image URL</label>
+                    <input formControlName="imageUrl" type="text" name="imageUrl" class="form-control" id="imageUrl" placeholder="Image URL">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="update-Recipe-form" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button (click)='updateRecipe()' [disabled]="!updateForm.valid" type="submit" class="btn btn-primary">update recipe</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

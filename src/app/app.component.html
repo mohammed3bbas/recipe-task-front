@@ -2,22 +2,22 @@
     <app-head-bar (searchBoxEvent)="searchBoxEvent($event)"> </app-head-bar>
 </div>
 
+<recipe-add-form> </recipe-add-form>
 
-
-<div id="wrapper" class="wrapper-content">
-    <app-sidebar></app-sidebar>
+<!-- <div id="wrapper" class="wrapper-content">
+    <app-sidebar (filterEvent)="filterEvent($event)"></app-sidebar>
 
     <div class="container" id="main-container">
 
         <div class="row">
-            <div *ngFor="let recipe of recipes" class="col-md-6 col-xl-3" [id]="recipe?.id">
+            <div *ngFor="let recipe of recipes" class="col-md-6 col-xl-3" [id]="recipe?.recipeId">
                 <div class="card m-b-30">
                     <div class="card-body row">
                         <div class="col-6">
                             <a><img src="{{recipe?.imageUrl}}" alt="" class="img-fluid rounded-circle"></a>
                         </div>
                         <div class="col-6 card-title align-self-center mb-0">
-                            <h5>{{recipe?.name}}</h5>
+                            <h5>{{recipe?.name}} </h5>
                             <p class="m-0"> {{recipe?.category?.name}} </p>
                         </div>
                     </div>
@@ -28,7 +28,7 @@
                         <div class="float-right btn-group btn-group-sm">
 
                             <a (click)="editRecipe()" class="btn btn-secondary tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
-                            <a (click)="deleteRecipe(recipe?.id)" class="btn btn-danger tooltips" data-placement="top" data-original-title="Delete"><i class="fa fa-trash"></i></a>
+                            <a (click)="deleteRecipe(recipe?.recipeId)" class="btn btn-danger tooltips" data-placement="top" data-original-title="Delete"><i class="fa fa-trash"></i></a>
                             <a class="btn btn-info tooltips" data-placement="top" data-original-title="details"><i
                         class="fa fa-info-circle" aria-hidden="true"></i></a>
                         </div>
@@ -37,4 +37,4 @@
             </div>
         </div>
     </div>
-</div>
+    </div> -->

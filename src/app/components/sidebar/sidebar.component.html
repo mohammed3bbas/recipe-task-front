@@ -4,14 +4,37 @@
             <li class="sidebar-brand">
                 <a>Categories</a>
             </li>
+            <!-- <div class=""> -->
+            <div class=" btn-group-vertical btn-group-toggle" role="group" aria-label="First group">
+                <div *ngFor="let category of categories">
+                    <button (click)="filterChoice(category?.name)" type="button" class="btn btn-light btn-sm btn-block" [value]="category.id"> {{category.name}}</button>
+
+                </div>
+                <div>
+                    <button (click)="filterChoice()" type="button" class="btn btn-secondary btn-sm btn-block" checked> Show All</button>
+
+                </div>
+
+            </div>
+
+            <!-- </div> -->
 
 
-            <div *ngFor="let category of categories" class="radio">
+
+
+            <!-- <div *ngFor="let category of categories" class="radio">
                 <label>
-                    <input ngModel type="radio" name="filter" [value]="category.id"> {{category.name}}
+                    <input (click)="filterChoice(category?.name)" ngModel type="radio" name="filter" [value]="category.id"> {{category.name}}
                 </label>
 
             </div>
+            <div>
+                <label>
+                    <input (click)="filterChoice()"  type="radio" > all
+                </label>
+            </div> -->
+
+
 
 
 
