@@ -31,6 +31,18 @@ export class CategoryPageComponent implements OnInit {
   }
 
   deleteCategory(id : number){
+    if (confirm("deleting category will delete all reciepes having this category, are you sure ?")) {
+      this.categoryService.deleteCategory(id).subscribe(
+        (response) => {
+          console.log("category with id : " , id , "deleted")
+          console.log(response);
+          
+        },
+        (error : HttpErrorResponse ) =>{
+          alert(error.message);
+        }
+      )
+    }
     this.categoryService.deleteCategory(id).subscribe(
       (response) => {
         console.log("category with id : " , id , "deleted")

@@ -12,17 +12,9 @@ import { RecipeService } from './services/recipe.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent  {
 
   
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
- 
-
-
-
-
 
 }
 
