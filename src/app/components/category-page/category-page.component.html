@@ -1,28 +1,37 @@
-<div id="wrapper" class="wrapper-content">
-    <div class="container" id="main-container">
-        <div class="row">
-            <div *ngFor="let category of categories" class="col-md-6 col-xl-3">
-                <div class="card m-b-30">
-                    <div class="card-body row">
-                        <div class="col-6">
-                            <a><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTw3n9dMsHnWudaevkJuNZMZpld9bMnS3oX9A&usqp=CAU" alt="" class="img-fluid rounded-circle"></a>
-                        </div>
-                        <div class="col-6 card-title align-self-center mb-0">
-                            <h5>{{category?.name}} </h5>
+<category-head-bar (addCategory)='chanegeAddCategoryMode()'></category-head-bar>
 
-                        </div>
-                    </div>
+<!-- <div id="wrapper" class="wrapper-content"> -->
+<!-- <div class="container" id="main-container"> -->
+<div *ngIf='addMode'>
+    <category-add-form (closeCategoryAddFormEvent)="chanegeAddCategoryMode()"></category-add-form>
+</div>
+<div class="row" *ngIf='!addMode'>
+    <div *ngFor="let category of categories" class="col-md-6 col-xl-3">
+        <div class="card m-b-30">
+            <div class="card-body row">
+                <div class="col-6">
+                    <a><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlSwakDjYwJm2oq-QtmVgS5xPZ_Isyz5EQjw&usqp=CAU" alt="" class="img-fluid rounded-circle"></a>
+                </div>
+                <div class="col-6 card-title align-self-center mb-0">
+                    <h5>{{category?.name}} </h5>
+
+                </div>
+            </div>
 
 
-                    <div class="card-body">
-                        <div class="float-right btn-group btn-group-sm">
 
-                            <a (click)="deleteCategory(category?.categoryId)" class="btn btn-danger tooltips" data-placement="top" data-original-title="Delete"><i class="fa fa-trash"></i></a>
+            <div class="card-body">
+                <div class="float-right btn-group btn-group-sm">
 
-                        </div>
-                    </div>
+                    <a (click)="deleteCategory(category?.categoryId)" class="btn btn-danger tooltips" data-placement="top" data-original-title="Delete"><i class="fa fa-trash"></i></a>
+                    <!-- -->
+                    <a [routerLink]="[category?.name]" class="btn btn-info tooltips" data-placement="top" data-original-title="details"><i
+                        class="fa fa-info-circle" aria-hidden="true"></i></a>
+
                 </div>
             </div>
         </div>
     </div>
 </div>
+<!-- </div> -->
+<!-- </div> -->

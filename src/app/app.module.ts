@@ -14,6 +14,10 @@ import { RouterModule } from '@angular/router';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { HomePageRecipesComponent } from './components/home-page-recipes/home-page-recipes.component';
 import { CategoryPageComponent } from './components/category-page/category-page.component';
+import { CategoryHeadBarComponent } from './components/category-head-bar/category-head-bar.component';
+import { CategoryAddFormComponent } from './components/category-add-form/category-add-form.component';
+import { RecipeInfoComponent } from './components/recipe-info/recipe-info.component';
+import { CategoryInfoComponent } from './components/category-info/category-info.component';
 
 
 @NgModule({
@@ -25,7 +29,11 @@ import { CategoryPageComponent } from './components/category-page/category-page.
     RecipeUpdateFormComponent,
     NotFoundComponent,
     HomePageRecipesComponent,
-    CategoryPageComponent
+    CategoryPageComponent,
+    CategoryHeadBarComponent,
+    CategoryAddFormComponent,
+    RecipeInfoComponent,
+    CategoryInfoComponent
   ],
   imports: [
     BrowserModule,
@@ -34,8 +42,10 @@ import { CategoryPageComponent } from './components/category-page/category-page.
     ReactiveFormsModule,
     RouterModule.forRoot([
       {path : '' , component : HomePageRecipesComponent },
+      {path : 'recipes' , component : HomePageRecipesComponent },
+      {path : 'recipes/:id', component : RecipeInfoComponent },
       {path : 'categories' , component : CategoryPageComponent},
-      // {path : '/recipes/:id', component :  },
+      {path : 'categories/:id' , component : CategoryInfoComponent},
       {path : '**', component : NotFoundComponent }
     ])
 

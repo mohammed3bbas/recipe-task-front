@@ -2,54 +2,23 @@
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
             <li class="sidebar-brand">
-                <a>Categories</a>
+                <a routerLink="/categories">Categories</a>
             </li>
             <!-- <div class=""> -->
-            <div class=" btn-group-vertical btn-group-toggle" role="group" aria-label="First group">
-                <div *ngFor="let category of categories">
-                    <button (click)="filterChoice(category?.name)" type="button" class="btn btn-light btn-sm btn-block" [value]="category.id"> {{category.name}}</button>
+            <div class="center">
+                <div class=" btn-group-vertical btn-group-toggle" role="group" aria-label="First group">
+                    <div *ngFor="let category of categories">
+                        <button (click)="filterChoice(category?.name)" type="button" class="btn btn-primary-outline btn-sm btn-block" [value]="category.id"> {{category.name}}</button>
 
-                </div>
-                <div>
-                    <button (click)="filterChoice()" type="button" class="btn btn-secondary btn-sm btn-block" checked> Show All</button>
+                    </div>
+                    <div>
+                        <button (click)="filterChoice()" type="button" class="btn btn-secondary btn-sm btn-block" checked> Show All</button>
+
+                    </div>
 
                 </div>
 
             </div>
-
-            <!-- </div> -->
-
-
-
-
-            <!-- <div *ngFor="let category of categories" class="radio">
-                <label>
-                    <input (click)="filterChoice(category?.name)" ngModel type="radio" name="filter" [value]="category.id"> {{category.name}}
-                </label>
-
-            </div>
-            <div>
-                <label>
-                    <input (click)="filterChoice()"  type="radio" > all
-                </label>
-            </div> -->
-
-
-
-
-
-            <!-- <div class="checkbox" *ngFor="let category of categories">
-                <label>
-                    <input type="checkbox"> {{category.name}}
-                </label>
-            </div> -->
-
-
-
-
-            <!-- <li *ngFor="let category of categories">
-                <a>{{category?.name}}</a>
-            </li> -->
 
         </ul>
     </div>

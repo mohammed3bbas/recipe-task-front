@@ -78,12 +78,12 @@ export class RecipeAddFormComponent implements OnInit {
 
 
       if(this.names.includes(newName)){
-        console.log("triiii")
+        console.log("not unique")
 
-        return {"isUniqueName" : false};
+        return {"isUniqueName" : true};
       }
       else{
-        console.log("trio")
+        // console.log("trio")
         return null;
       }
       

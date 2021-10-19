@@ -9,6 +9,7 @@ import { CategoryService } from 'src/app/services/category.service';
   styleUrls: ['./category-page.component.css']
 })
 export class CategoryPageComponent implements OnInit {
+  addMode : boolean = false;
   categories: Category[];
 
   constructor(private categoryService : CategoryService ) { }
@@ -31,9 +32,12 @@ export class CategoryPageComponent implements OnInit {
   }
 
   deleteCategory(id : number){
+    console.log(typeof id)
     if (confirm("deleting category will delete all reciepes having this category, are you sure ?")) {
+      
       this.categoryService.deleteCategory(id).subscribe(
         (response) => {
+          this.getAllCategories();
           console.log("category with id : " , id , "deleted")
           console.log(response);
           
@@ -43,19 +47,15 @@ export class CategoryPageComponent implements OnInit {
         }
       )
     }
-    this.categoryService.deleteCategory(id).subscribe(
-      (response) => {
-        console.log("category with id : " , id , "deleted")
-        console.log(response);
-        
-      },
-      (error : HttpErrorResponse ) =>{
-        alert(error.message);
-      }
-    )
 
     
-    
+  }
+  chanegeAddCategoryMode(){
+    this.getAllCategories() 
+    this.addMode = !this.addMode
+
+    console.log(this.addMode)
+
   }
 
 }

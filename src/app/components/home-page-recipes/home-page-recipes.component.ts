@@ -88,11 +88,7 @@ export class HomePageRecipesComponent implements OnInit {
 
 
   }
-  public editRecipe() {
-
-    // edit recipe 
-
-  }
+ 
 
 
   public filterEvent(name: string) {
@@ -104,9 +100,9 @@ export class HomePageRecipesComponent implements OnInit {
     if (name !== "all") {
       this.searchRecipeByCategoryName(name);
     }
-    else {
-      this.getAllRecipes();
-    }
+    // else {
+    //   this.getAllRecipes();
+    // }
 
 
 

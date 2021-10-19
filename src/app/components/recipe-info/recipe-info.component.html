@@ -1,0 +1,69 @@
+<app-head-bar>
+</app-head-bar>
+<div class="modal-dialog" role="document">
+
+    <div class="modal-content">
+        <!-- <div class="modal-header">
+            <h5 class="modal-title" id="addRecipeModalLabel">Add Recipe</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="backToRecipes()">
+           <span aria-hidden="true">&times;</span>
+        </button>
+        </div> -->
+        <div class="modal-body">
+            <form [formGroup]='updateForm'>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input formControlName="name" [readonly]='readonly' type="text" name="name" class="form-control" id="name" [value]="recipe?.name">
+                    <div *ngIf='!readonly '>
+                        <div *ngIf=" updateForm.get('name').hasError('isUniqueName') " class="alert alert-danger " role="alert "> Recipe name already taken</div>
+                        <div *ngIf="updateForm.get('name').hasError('required') " class="alert alert-danger " role="alert "> this field is required</div>
+                        <div *ngIf="updateForm.get('name').hasError('maxlength') " class="alert alert-danger " role="alert ">maxinmum name length is : {{updateForm.get('name ').errors.maxlength.requiredLength}}</div>
+                        <div *ngIf="updateForm.get('name').hasError('pattern')" class="alert alert-danger " role="alert "> only alphabets allowed </div>
+                    </div>
+
+                </div>
+                <div class="form-group ">
+                    <label for="minutes">Minutes</label>
+                    <input formControlName="minutes" type="text" name="minutes" [readonly]='readonly ' class="form-control " id="minutes " [value]='recipe?.minutes '>
+                    <div *ngIf='!readonly '>
+                        <div *ngIf="updateForm.get( 'minutes').hasError( 'required') " class="alert alert-danger " role="alert "> this field is required</div>
+                        <div *ngIf="updateForm.get( 'minutes').hasError( 'pattern') " class="alert alert-danger " role="alert "> only numbers accepted </div>
+                    </div>
+                </div>
+                <div class="form-group" *ngIf='readonly '>
+                    <label for="category">Category</label>
+                    <input type="text " name="category" [readonly]='readonly' class="form-control" id="category" [value]='recipe?.category?.name'>
+                </div>
+
+                <div class="form-group" *ngIf='!readonly'>
+                    <label for="category">Category</label>
+
+                    <select formControlName="categoryId" class="form-select" name="category" id="category" formControlName="categoryId">
+  
+                    <option  *ngFor="let category of categories " [value]="category.categoryId " >{{category?.name}} </option>
+                    </select>
+                    <div *ngIf="updateForm.get( 'categoryId').hasError( 'required') " class="alert alert-danger " role="alert "> this field is required</div>
+                    <div *ngIf="updateForm.get( 'categoryId').hasError( 'nullValidator') " class="alert alert-danger " role="alert "> this field is required</div>
+                </div>
+
+
+
+                <div class="form-group ">
+                    <label for="imageUrl ">Image URL</label>
+                    <input formControlName="imageUrl" type="text " name="imageUrl " [readonly]='readonly ' class="form-control " id="imageUrl " [value]='recipe?.imageUrl '>
+                </div>
+                <div class="form-check ">
+                    <input (click)="editMode()" class=" form-check-input " type="checkbox" id="flexCheckDefault ">
+                    <label class="form-check-label " for="flexCheckDefault ">
+                      update (edit) mode
+                    </label>
+                </div>
+                <div class="modal-footer ">
+                    <button type="button " class="btn btn-secondary " data-dismiss="modal " routerLink="">Back to recipes</button>
+                    <button (click)="updateRecipe()" *ngIf="!readonly " [disabled]=" !updateForm.valid " type="submit " class="btn btn-primary ">Update recipe</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

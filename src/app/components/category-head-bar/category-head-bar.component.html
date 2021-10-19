@@ -4,13 +4,10 @@
    <span class="navbar-toggler-icon"></span>
    </button>
     <div>
-        <button (click)="addFormView()" type="button" class="btn btn-primary  btn-sm" data-toggle="modal">
+        <button (click)="addCategoryFormView()" type="button" class="btn btn-primary  btn-sm" data-toggle="modal">
             <i class=" fa fa-plus " aria-hidden="true "></i>
-            New Recipe
+            New Category
         </button>
     </div>
-    <form class="form-inline ml-auto ">
-        <input #searchObject name="searchObject " class="form-control mr-sm-2 " type="search " placeholder="Search " aria-label="Search ">
-        <button (click)="search(searchObject.value)" class=" btn btn-outline-light my-2 my-sm-0 " type="submit ">Search</button>
-    </form>
+
 </nav>
