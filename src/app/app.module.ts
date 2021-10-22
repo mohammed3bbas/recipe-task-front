@@ -42,7 +42,7 @@ import { CategoryInfoComponent } from './components/category-info/category-info.
     ReactiveFormsModule,
     RouterModule.forRoot([
       {path : '' , component : HomePageRecipesComponent },
-      {path : 'recipes' , component : HomePageRecipesComponent },
+      {path : 'recipes/add', component : RecipeAddFormComponent },
       {path : 'recipes/:id', component : RecipeInfoComponent },
       {path : 'categories' , component : CategoryPageComponent},
       {path : 'categories/:id' , component : CategoryInfoComponent},

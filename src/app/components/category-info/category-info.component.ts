@@ -93,8 +93,8 @@ export class CategoryInfoComponent implements OnInit {
       
 
       let categoryDTO = new CategoryDTO(
-        this.category.categoryId,
-        this.updateCategoryForm.value.name
+        this.updateCategoryForm.value.name,
+        this.category.categoryId
       )
       console.log("categoryDTO object created .. ")
       console.log(categoryDTO);

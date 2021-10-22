@@ -31,12 +31,12 @@ export class HeadBarComponent implements OnInit {
   }
 
 
-  addFormView(){
-    console.log("add form ")
-    this.headBarEvent.emit("addFormViewMode")
-    console.log("finished")
+  // addFormView(){
+  //   console.log("add form ")
+  //   this.headBarEvent.emit("addFormViewMode")
+  //   console.log("finished")
 
-  }
+  // }
 
 
   

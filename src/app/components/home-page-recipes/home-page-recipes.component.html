@@ -13,9 +13,9 @@
     <app-sidebar (filterEvent)="filterEvent($event)"></app-sidebar>
     <div class="container" id="main-container">
 
-        <div *ngIf='addMode'>
+        <!-- <div *ngIf='addMode'>
             <recipe-add-form (closeEvent)='addModeChange()'> </recipe-add-form>
-        </div>
+        </div> -->
         <div *ngIf='!addMode' class="row">
             <div *ngFor="let recipe of recipes" class="col-md-6 col-xl-3" [id]="recipe?.recipeId">
                 <div class="card m-b-30">

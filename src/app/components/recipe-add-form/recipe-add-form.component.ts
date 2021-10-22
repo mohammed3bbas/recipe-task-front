@@ -18,7 +18,7 @@ export class RecipeAddFormComponent implements OnInit {
   recipes: Recipe[];
   // recipeDTO : RecipeDTO
   names : String[]  = []
-  @Output() closeEvent = new EventEmitter<void>()
+  // @Output() closeEvent = new EventEmitter<void>()
   
 
   constructor(private categoryService : CategoryService , private recipeService : RecipeService) { }
@@ -117,12 +117,12 @@ export class RecipeAddFormComponent implements OnInit {
 
   }
 
-  backToRecipes(){
-    console.log("close")
-    this.closeEvent.emit();
-    console.log("closed")
+  // backToRecipes(){
+  //   console.log("close")
+  //   this.closeEvent.emit();
+  //   console.log("closed")
 
-  }
+  // }
 
   
   

@@ -1,9 +1,11 @@
-export class CategoryDTO {
-    categoryId: number
-    name: string
+export class CategoryDTO{
+    categoryId : number
+    name : string
 
-    constructor(categoryId: number, name: string) {
+    constructor(name : string , categoryId? : number){
         this.name = name;
-        this.categoryId = categoryId;
+        if (typeof categoryId !== 'undefined'){
+            this.categoryId = categoryId;
+          }
     }
 }
